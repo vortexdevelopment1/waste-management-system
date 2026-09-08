@@ -2,21 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root { height: 100%; }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
   @apply bg-canvas text-ink font-sans antialiased;
   background-image:
-    radial-gradient(1200px 600px at 90% -10%, rgba(34,184,166,0.06), transparent),
-    radial-gradient(900px 500px at -10% 20%, rgba(239,162,61,0.05), transparent);
+    radial-gradient(1200px 600px at 90% -10%, rgba(34, 184, 166, 0.06), transparent),
+    radial-gradient(900px 500px at -10% 20%, rgba(239, 162, 61, 0.05), transparent);
 }
 
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #223252; border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #2c3f66; }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-.tabular { font-variant-numeric: tabular-nums; }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #223252;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3f66;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
 
 .leaflet-container {
   background: #0d1626 !important;

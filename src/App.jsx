@@ -4,6 +4,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute.jsx'
 
 import Login from './pages/Login.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import UsersManagement from './pages/UsersManagement.jsx'
 import RouteTracking from './pages/RouteTracking.jsx'
 import WasteCollection from './pages/WasteCollection.jsx'
 import Geotagging from './pages/Geotagging.jsx'
@@ -34,6 +35,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/users-management"
+        element={
+          <ProtectedRoute moduleKey="users-management">
+            <UsersManagement />
           </ProtectedRoute>
         }
       />

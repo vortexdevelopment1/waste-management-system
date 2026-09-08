@@ -1,5 +1,5 @@
 import {
-  LayoutDashboard, Route, Trash2, MapPinned, Recycle, Building2,
+  LayoutDashboard, Users, Route, Trash2, MapPinned, Recycle, Building2,
   Warehouse, Factory, Siren, Scale, Video, Wallet, MessageSquareWarning,
   Gauge, FileBarChart2, Wind, Waves, Settings as SettingsIcon
 } from 'lucide-react'
@@ -7,6 +7,7 @@ import {
 // One entry per module identified in the source documentation.
 export const NAV = [
   { key: 'dashboard', label: 'Dashboard', path: '/', icon: LayoutDashboard },
+  { key: 'users-management', label: 'User & Crew Control', path: '/users-management', icon: Users },
   { key: 'route-tracking', label: 'Route Tracking', path: '/route-tracking', icon: Route },
   { key: 'waste-collection', label: 'Waste Collection', path: '/waste-collection', icon: Trash2 },
   { key: 'geotagging', label: 'Geotagging', path: '/geotagging', icon: MapPinned },

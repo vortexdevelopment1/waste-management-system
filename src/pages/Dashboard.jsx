@@ -53,9 +53,9 @@ export default function Dashboard() {
       tone: 'border-civic-saffron/40 bg-civic-saffronDim/20 text-civic-saffron',
       icon: ShieldCheck,
       actions: [
-        { label: 'View KPI Analytics', to: '/kpi' },
-        { label: 'System Reports', to: '/reports' },
-        { label: 'Platform Settings', to: '/settings' }
+        { label: 'User & Crew Control', to: '/users-management' },
+        { label: 'KPI Analytics', to: '/kpi' },
+        { label: 'System Reports', to: '/reports' }
       ]
     },
     supervisor: {
