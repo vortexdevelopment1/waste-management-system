@@ -1,16 +1,30 @@
-# React + Vite
+# ASUTOS SWM Command Center — Frontend Prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-styled **frontend-only** prototype/MVP for a Smart Waste Management
+platform, built from the uploaded SWM documentation. No backend is included —
+all data is mocked in `src/data/`, structured so it maps 1:1 onto a real API later.
 
-Currently, two official plugins are available:
+## Stack
+React 18 · Vite · Tailwind CSS · React Router · Recharts · React Leaflet · Lucide Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting started
+```bash
+npm install
+npm run dev       # http://localhost:5173
+npm run build      # production build to dist/
+```
 
-## React Compiler
+## Structure
+See `ARCHITECTURE.md` (delivered alongside this project) for the full
+information architecture, role matrix, page-by-page breakdown, and roadmap.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Role switcher
+Use the role menu in the top bar (or `/login`) to preview how the sidebar and
+access control change for Admin, Authority, Supervisor, Driver, Helper, and
+Surveyor — access rules live in `src/data/roles.js`.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Design system
+Tokens live in `tailwind.config.js` (`civic.*` colors) and `src/index.css`.
+Theme: government smart-city command center — deep graphite-navy canvas,
+civic teal for GIS/live status, marigold-saffron for alerts/statutory
+highlights, IBM Plex Sans/Mono for a technical, telemetry-driven feel.
