@@ -64,7 +64,7 @@ export default function Geotagging() {
             <div className="flex items-center gap-2 rounded-md border border-border bg-surface-alt px-2.5 py-2 text-ink-muted">
               <MapPin size={13} className="text-civic-sky" /> Landmark / Centre Point
             </div>
-            <button className="w-full bg-civic-teal text-canvas text-xs font-medium rounded-md py-2 mt-1 hover:opacity-90">
+            <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl py-2.5 mt-1 shadow-sm transition-colors cursor-pointer">
               Save Tagging
             </button>
           </div>

@@ -3,6 +3,7 @@ import DashboardLayout from '../layouts/DashboardLayout.jsx'
 import SectionCard from '../components/ui/SectionCard.jsx'
 import { useRole } from '../hooks/useRole.js'
 import { ROLES } from '../data/roles.js'
+import ThemeToggle from '../components/ui/ThemeToggle.jsx'
 
 export default function Settings() {
   const { role, setRole } = useRole()
@@ -20,6 +21,18 @@ export default function Settings() {
               <div className="text-[11px] text-ink-faint mt-1">{r.description}</div>
             </button>
           ))}
+        </div>
+      </SectionCard>
+
+      <SectionCard title="Appearance & Display Theme" eyebrow="User Interface">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3 bg-surface-alt border border-border rounded-xl">
+          <div>
+            <div className="text-xs font-semibold text-ink">Day & Night Mode</div>
+            <div className="text-[11px] text-ink-muted mt-0.5">
+              Switch between Day (Light) mode and Night (Dark) mode across all command dashboards and modules.
+            </div>
+          </div>
+          <ThemeToggle size="md" showLabel />
         </div>
       </SectionCard>
 

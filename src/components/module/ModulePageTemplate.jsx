@@ -17,11 +17,12 @@ import DonutChartCard from '../charts/DonutChartCard.jsx'
  * Rather than hand-building 10 near-identical pages, one config-driven
  * template renders all of them — new modules are added by data, not code.
  */
-export default function ModulePageTemplate({ config }) {
+export default function ModulePageTemplate({ config, children }) {
   const { title, subtitle, kpis, map, photos, progress, chart, table } = config
 
   return (
     <DashboardLayout title={title} subtitle={subtitle}>
+      {children}
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
         {kpis.map((k) => <KpiCard key={k.label} {...k} />)}
       </div>

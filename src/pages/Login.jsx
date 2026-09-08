@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import { DEMO_CREDENTIALS, ROLES } from '../data/roles.js'
 import { useRole } from '../hooks/useRole.js'
+import ThemeToggle from '../components/ui/ThemeToggle.jsx'
 
 export default function Login() {
   const { login, loginAsRole, isAuthenticated } = useRole()
@@ -44,32 +45,32 @@ export default function Login() {
 
   const roleStyles = {
     admin: {
-      border: 'hover:border-civic-saffron/60',
-      activeBorder: 'border-civic-saffron ring-1 ring-civic-saffron/40 bg-civic-saffronDim/30',
-      badge: 'bg-civic-saffronDim text-civic-saffron border-civic-saffron/30',
-      iconBg: 'bg-civic-saffronDim text-civic-saffron',
-      btn: 'hover:bg-civic-saffron/20 text-civic-saffron'
+      border: 'hover:border-amber-400 hover:shadow-card',
+      activeBorder: 'border-amber-500 ring-2 ring-amber-500/20 bg-amber-50/70',
+      badge: 'bg-amber-50 text-amber-800 border-amber-200',
+      iconBg: 'bg-amber-100 text-amber-800',
+      btn: 'hover:bg-amber-100 text-amber-800'
     },
     supervisor: {
-      border: 'hover:border-civic-teal/60',
-      activeBorder: 'border-civic-teal ring-1 ring-civic-teal/40 bg-civic-tealDim/30',
-      badge: 'bg-civic-tealDim text-civic-teal border-civic-teal/30',
-      iconBg: 'bg-civic-tealDim text-civic-teal',
-      btn: 'hover:bg-civic-teal/20 text-civic-teal'
+      border: 'hover:border-emerald-400 hover:shadow-card',
+      activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/20 bg-emerald-50/70',
+      badge: 'bg-emerald-50 text-emerald-800 border-emerald-200',
+      iconBg: 'bg-emerald-100 text-emerald-800',
+      btn: 'hover:bg-emerald-100 text-emerald-800'
     },
     driver: {
-      border: 'hover:border-civic-sky/60',
-      activeBorder: 'border-civic-sky ring-1 ring-civic-sky/40 bg-civic-skyDim/30',
-      badge: 'bg-civic-skyDim text-civic-sky border-civic-sky/30',
-      iconBg: 'bg-civic-skyDim text-civic-sky',
-      btn: 'hover:bg-civic-sky/20 text-civic-sky'
+      border: 'hover:border-blue-400 hover:shadow-card',
+      activeBorder: 'border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/70',
+      badge: 'bg-blue-50 text-blue-800 border-blue-200',
+      iconBg: 'bg-blue-100 text-blue-800',
+      btn: 'hover:bg-blue-100 text-blue-800'
     },
     user: {
-      border: 'hover:border-civic-leaf/60',
-      activeBorder: 'border-civic-leaf ring-1 ring-civic-leaf/40 bg-civic-leafDim/30',
-      badge: 'bg-civic-leafDim text-civic-leaf border-civic-leaf/30',
-      iconBg: 'bg-civic-leafDim text-civic-leaf',
-      btn: 'hover:bg-civic-leaf/20 text-civic-leaf'
+      border: 'hover:border-teal-400 hover:shadow-card',
+      activeBorder: 'border-teal-500 ring-2 ring-teal-500/20 bg-teal-50/70',
+      badge: 'bg-teal-50 text-teal-800 border-teal-200',
+      iconBg: 'bg-teal-100 text-teal-800',
+      btn: 'hover:bg-teal-100 text-teal-800'
     }
   }
 
@@ -140,9 +141,9 @@ export default function Login() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-mono text-ink-faint">
-            <div className="hidden sm:flex items-center gap-1.5 bg-surface-alt px-3 py-1.5 rounded-md border border-border">
-              <Clock size={13} className="text-civic-teal" />
+          <div className="flex items-center gap-3 text-xs font-mono text-ink-faint">
+            <div className="hidden sm:flex items-center gap-1.5 bg-surface-alt px-3 py-1.5 rounded-lg border border-border">
+              <Clock size={13} className="text-emerald-600" />
               <span className="text-ink">
                 {currentTime.toLocaleTimeString('en-IN', { hour12: false })} IST
               </span>
@@ -150,10 +151,11 @@ export default function Login() {
                 ({currentTime.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })})
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-civic-leaf bg-civic-leafDim/40 border border-civic-leaf/30 px-2.5 py-1 rounded-md text-[11px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-civic-leaf animate-pulse" />
-              SWM IoT Grid Online
+            <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg text-[11px] font-sans font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              IoT Grid Online
             </div>
+            <ThemeToggle size="sm" />
           </div>
         </div>
       </header>
@@ -211,7 +213,7 @@ export default function Login() {
                     </div>
 
                     {/* Role Details */}
-                    <h3 className="text-sm font-semibold text-ink group-hover:text-white transition-colors">
+                    <h3 className="text-sm font-semibold text-ink group-hover:text-emerald-700 transition-colors">
                       {cred.title}
                     </h3>
                     <p className="text-[11px] text-ink-muted mt-0.5 leading-snug">
@@ -269,20 +271,20 @@ export default function Login() {
         </div>
 
         {/* Central Sign-In Card */}
-        <div className="max-w-md w-full mx-auto bg-surface border border-border rounded-2xl p-6 shadow-2xl relative">
+        <div className="max-w-md w-full mx-auto bg-surface border border-border rounded-2xl p-6 md:p-7 shadow-panel relative">
           <div className="flex items-center justify-between pb-4 mb-5 border-b border-border">
             <div>
               <h2 className="text-base font-semibold text-ink">Sign In to Account</h2>
               <p className="text-xs text-ink-muted mt-0.5">Use your designated municipal login</p>
             </div>
-            <div className="w-8 h-8 rounded-lg bg-surface-alt border border-border flex items-center justify-center text-civic-teal">
+            <div className="w-8 h-8 rounded-lg bg-surface-alt border border-border flex items-center justify-center text-emerald-600">
               <Lock size={15} />
             </div>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 rounded-lg bg-civic-roseDim/50 border border-civic-rose/40 flex items-start gap-2.5 text-xs text-civic-rose animate-fadeIn">
+            <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 flex items-start gap-2.5 text-xs text-red-600 animate-fadeIn">
               <AlertCircle size={15} className="shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
@@ -301,7 +303,7 @@ export default function Login() {
                   onClick={() => handleQuickFill(cred)}
                   className={`py-1.5 px-2 rounded-lg text-xs font-medium border transition-all text-center ${
                     selectedRole === cred.role
-                      ? 'bg-civic-tealDim text-civic-teal border-civic-teal/40 font-semibold shadow-sm'
+                      ? 'bg-emerald-50 text-emerald-800 border-emerald-300 font-semibold shadow-xs'
                       : 'bg-surface-alt text-ink-muted border-border hover:text-ink hover:bg-surface-raised'
                   }`}
                 >
@@ -330,7 +332,7 @@ export default function Login() {
                     setError('')
                   }}
                   placeholder="e.g. admin or admin@swm.gov.in"
-                  className="w-full pl-9 pr-3 py-2.5 bg-surface-alt border border-border rounded-lg text-xs text-ink placeholder:text-ink-faint focus:outline-none focus:border-civic-teal focus:ring-1 focus:ring-civic-teal transition-all font-mono"
+                  className="w-full pl-9 pr-3 py-2.5 bg-surface-alt border border-border rounded-xl text-xs text-ink placeholder:text-ink-faint focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all font-mono"
                   required
                 />
               </div>
@@ -358,7 +360,7 @@ export default function Login() {
                     setError('')
                   }}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-10 py-2.5 bg-surface-alt border border-border rounded-lg text-xs text-ink placeholder:text-ink-faint focus:outline-none focus:border-civic-teal focus:ring-1 focus:ring-civic-teal transition-all font-mono"
+                  className="w-full pl-9 pr-10 py-2.5 bg-surface-alt border border-border rounded-xl text-xs text-ink placeholder:text-ink-faint focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all font-mono"
                   required
                 />
                 <button
@@ -378,11 +380,11 @@ export default function Login() {
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="w-3.5 h-3.5 rounded bg-surface-alt border-border text-civic-teal focus:ring-0 focus:ring-offset-0"
+                  className="w-3.5 h-3.5 rounded bg-surface-alt border-border text-emerald-600 focus:ring-0 focus:ring-offset-0"
                 />
                 <span>Remember session</span>
               </label>
-              <span className="text-civic-teal text-[11px] hover:underline cursor-pointer">
+              <span className="text-emerald-700 text-[11px] hover:underline cursor-pointer font-medium">
                 Help & Support
               </span>
             </div>
@@ -391,11 +393,11 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 rounded-lg bg-civic-teal text-surface font-semibold text-xs tracking-wide hover:bg-civic-teal/90 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-civic-teal/20 disabled:opacity-50 cursor-pointer"
+              className="w-full py-2.5 px-4 rounded-xl bg-civic-teal text-white font-semibold text-xs tracking-wide hover:opacity-90 active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-soft disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
                 <>
-                  <div className="w-3.5 h-3.5 border-2 border-surface border-t-transparent rounded-full animate-spin" />
+                  <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Verifying Credentials…</span>
                 </>
               ) : (

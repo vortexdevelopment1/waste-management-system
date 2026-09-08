@@ -59,11 +59,11 @@ export default function RouteTracking() {
               <button
                 key={r.id}
                 onClick={() => setActive(r)}
-                className={`w-full text-left rounded-md border p-2.5 transition-colors ${active.id === r.id ? 'border-civic-teal/40 bg-civic-tealDim' : 'border-border bg-surface-alt hover:border-civic-teal/20'}`}
+                className={`w-full text-left rounded-xl border p-3 transition-all cursor-pointer ${active.id === r.id ? 'border-civic-teal/40 bg-civic-tealDim shadow-xs' : 'border-border bg-surface hover:border-border hover:bg-surface-alt'}`}
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-ink">{r.id}</span>
-                  <span className="font-mono text-civic-teal">{r.progress}%</span>
+                  <span className="font-mono font-bold text-ink">{r.id}</span>
+                  <span className="font-mono font-bold text-civic-teal">{r.progress}%</span>
                 </div>
                 <div className="text-[11px] text-ink-muted mt-0.5">{r.driver}</div>
                 <div className="text-[11px] text-ink-faint">{r.vehicle} · {r.properties} properties</div>
@@ -107,9 +107,9 @@ export default function RouteTracking() {
 
 function Row({ k, v, mono }) {
   return (
-    <div className="flex items-center justify-between border-b border-border-soft pb-2">
-      <span className="text-ink-faint">{k}</span>
-      <span className={mono ? 'font-mono text-ink' : 'text-ink'}>{v}</span>
+    <div className="flex items-center justify-between border-b border-border pb-2">
+      <span className="text-ink-muted">{k}</span>
+      <span className={mono ? 'font-mono text-ink font-bold' : 'text-ink font-semibold'}>{v}</span>
     </div>
   )
 }

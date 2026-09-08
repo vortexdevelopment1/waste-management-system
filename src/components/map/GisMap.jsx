@@ -2,10 +2,10 @@ import React from 'react'
 import { MapContainer, TileLayer, CircleMarker, Popup, Polyline } from 'react-leaflet'
 
 const STATUS_COLOR = {
-  green: '#4CC77E',
-  yellow: '#EFA23D',
-  red: '#E96A6A',
-  blue: '#3FA9DA'
+  green: '#20B486',
+  yellow: '#F59E0B',
+  red: '#D64545',
+  blue: '#2684E8'
 }
 
 /**
@@ -15,13 +15,13 @@ const STATUS_COLOR = {
  */
 export default function GisMap({ center = [18.5204, 73.8567], zoom = 14, markers = [], route = [], height = 320 }) {
   return (
-    <div style={{ height }} className="rounded-md overflow-hidden border border-border">
+    <div style={{ height }} className="rounded-2xl overflow-hidden border border-border shadow-soft">
       <MapContainer center={center} zoom={zoom} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
         <TileLayer
-          attribution='&copy; OpenStreetMap contributors, &copy; CARTO'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {route.length > 1 && <Polyline positions={route} pathOptions={{ color: '#22B8A6', weight: 3, opacity: 0.8 }} />}
+        {route.length > 1 && <Polyline positions={route} pathOptions={{ color: '#13B889', weight: 4, opacity: 0.9 }} />}
         {markers.map((m, i) => (
           <CircleMarker
             key={i}

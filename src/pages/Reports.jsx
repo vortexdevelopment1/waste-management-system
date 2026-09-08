@@ -46,7 +46,7 @@ export default function Reports() {
               <button
                 key={c}
                 onClick={() => setSelected(c)}
-                className={`w-full text-left px-3 py-2 rounded-md text-xs border ${selected === c ? 'border-civic-teal/40 bg-civic-tealDim text-civic-teal' : 'border-transparent text-ink-muted hover:bg-surface-alt'}`}
+                className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium border transition-all ${selected === c ? 'border-emerald-500/40 bg-emerald-50 text-emerald-800 shadow-xs' : 'border-transparent text-ink-muted hover:bg-surface-alt hover:text-ink'}`}
               >
                 {c}
               </button>
@@ -83,8 +83,8 @@ export default function Reports() {
 
 function ActionBtn({ icon: Icon, label }) {
   return (
-    <button className="flex items-center gap-1.5 border border-border bg-surface-alt hover:border-civic-teal/30 text-ink-muted hover:text-ink text-[11px] rounded-md px-2.5 py-1.5">
-      <Icon size={13} /> {label}
+    <button className="flex items-center gap-1.5 border border-border bg-surface-alt hover:bg-surface-raised hover:border-emerald-500/30 text-ink-muted hover:text-ink text-[11px] font-medium rounded-xl px-3 py-1.5 transition-all shadow-xs cursor-pointer">
+      <Icon size={13} className="text-emerald-600" /> {label}
     </button>
   )
 }
