@@ -9,8 +9,10 @@ import BarChartCard from '../components/charts/BarChartCard.jsx'
 import DonutChartCard from '../components/charts/DonutChartCard.jsx'
 import {
   Truck, Recycle, Route as RouteIcon, Wallet, MessageSquareWarning,
-  Satellite, Video, Droplets
+  Satellite, Video, Droplets, ShieldCheck, UserCheck, User, ArrowRight
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { useRole } from '../hooks/useRole.js'
 
 const wasteTrend = [
   { label: 'Mon', value: 612 }, { label: 'Tue', value: 634 }, { label: 'Wed', value: 598 },
@@ -42,8 +44,101 @@ const activity = [
 ]
 
 export default function Dashboard() {
+  const { role, roleInfo, currentUser } = useRole()
+
+  const roleBanners = {
+    admin: {
+      title: 'Administrator Command Oversight',
+      desc: 'All 17 municipal modules, 6 zones, and automated IoT sensor grid active.',
+      tone: 'border-civic-saffron/40 bg-civic-saffronDim/20 text-civic-saffron',
+      icon: ShieldCheck,
+      actions: [
+        { label: 'View KPI Analytics', to: '/kpi' },
+        { label: 'System Reports', to: '/reports' },
+        { label: 'Platform Settings', to: '/settings' }
+      ]
+    },
+    supervisor: {
+      title: 'Field Operations & Sanitary Inspection (Zone 02)',
+      desc: 'Ward 04/05/06 beat adherence: 92.4% • 4 Rapid Action Patrols on standby.',
+      tone: 'border-civic-teal/40 bg-civic-tealDim/20 text-civic-teal',
+      icon: UserCheck,
+      actions: [
+        { label: 'Inspect Route Tracking', to: '/route-tracking' },
+        { label: 'Rapid Action Team', to: '/rapid-action-team' },
+        { label: 'Grievance Review (46 open)', to: '/complaints' }
+      ]
+    },
+    driver: {
+      title: 'Vehicle Operator Console — Tipper MH-12-Q-402',
+      desc: 'Assigned Route: Beat W04-01 (Market Road & Sector 4) • Shift status: Active.',
+      tone: 'border-civic-sky/40 bg-civic-skyDim/20 text-civic-sky',
+      icon: Truck,
+      actions: [
+        { label: 'Open Live Beat Route', to: '/route-tracking' },
+        { label: 'Log QR Waste Pickup', to: '/waste-collection' },
+        { label: 'Report Road Blockage', to: '/complaints' }
+      ]
+    },
+    user: {
+      title: 'Citizen Sanitation Portal — Property W04-B02-8842',
+      desc: 'Morning collection vehicle arrived at 07:15 AM • Your segregation rating: 5 Stars.',
+      tone: 'border-civic-leaf/40 bg-civic-leafDim/20 text-civic-leaf',
+      icon: User,
+      actions: [
+        { label: 'Check Collection Schedule', to: '/waste-collection' },
+        { label: 'Pay User Charges (₹50)', to: '/user-charges' },
+        { label: 'Report Litter / Grievance', to: '/complaints' }
+      ]
+    }
+  }
+
+  const banner = roleBanners[role] || roleBanners.admin
+  const BannerIcon = banner.icon
+
   return (
-    <DashboardLayout title="City Command Dashboard" subtitle="Live citywide solid waste management overview — updated every 60s">
+    <DashboardLayout
+      title="City Command Dashboard"
+      subtitle="Live citywide solid waste management overview — updated every 60s"
+    >
+      {/* Role-tailored Greeting Banner */}
+      <div className={`border rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm ${banner.tone}`}>
+        <div className="flex items-start gap-3.5">
+          <div className="w-10 h-10 rounded-lg bg-surface border border-current/20 flex items-center justify-center shrink-0">
+            <BannerIcon size={20} />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md bg-surface border border-current/30 font-mono">
+                {roleInfo?.label || role} Mode
+              </span>
+              <span className="text-xs text-ink font-medium">
+                Welcome, {currentUser?.name || roleInfo?.label}
+              </span>
+            </div>
+            <h2 className="text-sm md:text-base font-bold text-ink mt-1">
+              {banner.title}
+            </h2>
+            <p className="text-xs text-ink-muted mt-0.5">
+              {banner.desc}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 pt-2 md:pt-0">
+          {banner.actions.map((act) => (
+            <Link
+              key={act.to}
+              to={act.to}
+              className="px-3 py-1.5 rounded-lg bg-surface border border-border text-xs font-medium text-ink hover:text-white hover:border-current/50 transition-all flex items-center gap-1 shadow-sm"
+            >
+              <span>{act.label}</span>
+              <ArrowRight size={12} className="opacity-70" />
+            </Link>
+          ))}
+        </div>
+      </div>
+
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
         <KpiCard label="Live Vehicle Count" value="142" unit="/ 160" tone="sky" icon={Truck} delta="+4 since 09:00" />
         <KpiCard label="Total Waste Collected" value="3,140" unit="MT / today" tone="teal" icon={Recycle} delta="+6.1% vs yesterday" />

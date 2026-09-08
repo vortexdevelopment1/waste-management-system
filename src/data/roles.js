@@ -1,65 +1,161 @@
-// Role definitions sourced from the SWM documentation login interfaces:
-// "LOGIN INTERFACE FOR SUPERVISOR", "LOGIN INTERFACE FOR DRIVER/HELPER",
-// "LOGIN INTERFACE FOR SURVEYOR", and recurring "Dashboard for Admin / Authority / Member".
+// Solid Waste Management (SWM) Command Center — 4 Role Configuration & Demo Credentials
 
 export const ROLES = {
   admin: {
     id: 'admin',
     label: 'Admin',
-    description: 'Full platform control — configuration, all modules, all wards.',
-    color: 'saffron'
-  },
-  authority: {
-    id: 'authority',
-    label: 'Authority',
-    description: 'City / Municipal Health Officer — statutory oversight & sign-off.',
-    color: 'violet'
+    title: 'System Administrator',
+    description: 'Full municipal command — configuration, all 17 modules, IoT telemetry, all wards & settings.',
+    color: 'saffron',
+    badgeTone: 'saffron',
+    demo: {
+      username: 'admin',
+      email: 'admin@swm.gov.in',
+      password: 'admin123',
+      name: 'Dr. Rajesh Verma',
+      designation: 'Chief SWM Administrator'
+    }
   },
   supervisor: {
     id: 'supervisor',
     label: 'Supervisor',
-    description: 'Sanitary Inspector — beat allocation, crew muster, field verification.',
-    color: 'teal'
+    title: 'Sanitary Inspector',
+    description: 'Field operations & supervision — beat allocation, crew muster, rapid action team & inspections.',
+    color: 'teal',
+    badgeTone: 'teal',
+    demo: {
+      username: 'supervisor',
+      email: 'supervisor@swm.gov.in',
+      password: 'super123',
+      name: 'Sunil Patil',
+      designation: 'Sanitary Inspector (Zone 2)'
+    }
   },
   driver: {
     id: 'driver',
     label: 'Driver',
-    description: 'Vehicle operator — beat navigation & QR-based collection.',
-    color: 'sky'
+    title: 'Fleet Vehicle Operator',
+    description: 'Vehicle navigation & collection — assigned beat route, RFID/QR pickup logging & bin status.',
+    color: 'sky',
+    badgeTone: 'sky',
+    demo: {
+      username: 'driver',
+      email: 'driver@swm.gov.in',
+      password: 'driver123',
+      name: 'Mukesh Solanki',
+      designation: 'Vehicle Operator (Tipper MH-12-Q-402)'
+    }
   },
-  helper: {
-    id: 'helper',
-    label: 'Helper',
-    description: 'Collection crew — door-to-door segregation logging.',
-    color: 'leaf'
-  },
-  surveyor: {
-    id: 'surveyor',
-    label: 'Surveyor',
-    description: 'GIS field surveyor — ward/zone/route geotagging.',
-    color: 'rose'
+  user: {
+    id: 'user',
+    label: 'User',
+    title: 'Citizen & Resident',
+    description: 'Citizen portal — daily waste collection schedule, segregation guide, fees & grievance logging.',
+    color: 'leaf',
+    badgeTone: 'leaf',
+    demo: {
+      username: 'user',
+      email: 'user@swm.gov.in',
+      password: 'user123',
+      name: 'Ananya Deshmukh',
+      designation: 'Resident / Property Owner (Ward 4)'
+    }
   }
 }
 
+export const DEMO_CREDENTIALS = [
+  {
+    role: 'admin',
+    label: 'Admin',
+    title: 'System Administrator',
+    username: 'admin',
+    email: 'admin@swm.gov.in',
+    password: 'admin123',
+    name: 'Dr. Rajesh Verma',
+    designation: 'Chief SWM Administrator',
+    access: 'Full Command Center (All 17 Modules)',
+    color: 'saffron'
+  },
+  {
+    role: 'supervisor',
+    label: 'Supervisor',
+    title: 'Sanitary Inspector',
+    username: 'supervisor',
+    email: 'supervisor@swm.gov.in',
+    password: 'super123',
+    name: 'Sunil Patil',
+    designation: 'Sanitary Inspector (Zone 2)',
+    access: 'Field Ops, RAT, Sweeping & Desilting',
+    color: 'teal'
+  },
+  {
+    role: 'driver',
+    label: 'Driver',
+    title: 'Fleet Operator',
+    username: 'driver',
+    email: 'driver@swm.gov.in',
+    password: 'driver123',
+    name: 'Mukesh Solanki',
+    designation: 'Tipper Operator (MH-12-Q-402)',
+    access: 'Routes, Waste Collection, Segregation',
+    color: 'sky'
+  },
+  {
+    role: 'user',
+    label: 'User',
+    title: 'Citizen / Resident',
+    username: 'user',
+    email: 'user@swm.gov.in',
+    password: 'user123',
+    name: 'Ananya Deshmukh',
+    designation: 'Property Owner (Ward 4 / Beat 2)',
+    access: 'Collection Status, User Charges, Grievance',
+    color: 'leaf'
+  }
+]
+
 export const ROLE_ACCESS = {
   admin: '*',
-  authority: [
-    'dashboard', 'kpi', 'reports', 'bwg', 'transfer-station', 'mrf', 'rat',
-    'weighbridge', 'cctv', 'user-charges', 'complaints', 'street-sweeping',
-    'drain-desilting', 'geotagging', 'settings'
-  ],
   supervisor: [
     'dashboard', 'route-tracking', 'waste-collection', 'segregation', 'bwg',
-    'rat', 'complaints', 'street-sweeping', 'drain-desilting', 'weighbridge',
-    'cctv', 'geotagging'
+    'transfer-station', 'mrf', 'rat', 'weighbridge', 'cctv', 'complaints',
+    'street-sweeping', 'drain-desilting', 'geotagging', 'kpi', 'reports'
   ],
-  driver: ['route-tracking', 'waste-collection', 'segregation'],
-  helper: ['route-tracking', 'waste-collection', 'segregation'],
-  surveyor: ['geotagging', 'dashboard']
+  driver: [
+    'dashboard', 'route-tracking', 'waste-collection', 'segregation', 'complaints'
+  ],
+  user: [
+    'dashboard', 'waste-collection', 'user-charges', 'complaints', 'segregation'
+  ]
 }
 
 export function canAccess(role, moduleKey) {
+  if (!role) return false
   const access = ROLE_ACCESS[role]
   if (access === '*') return true
-  return access?.includes(moduleKey)
+  return Boolean(access?.includes(moduleKey))
 }
+
+export function authenticateUser(identifier, password) {
+  if (!identifier || !password) return null
+  const cleanId = identifier.trim().toLowerCase()
+  const cleanPass = password.trim()
+
+  const match = DEMO_CREDENTIALS.find(
+    (c) =>
+      (c.username.toLowerCase() === cleanId || c.email.toLowerCase() === cleanId) &&
+      c.password === cleanPass
+  )
+
+  if (!match) return null
+
+  return {
+    role: match.role,
+    username: match.username,
+    email: match.email,
+    name: match.name,
+    designation: match.designation,
+    title: match.title
+  }
+}
+

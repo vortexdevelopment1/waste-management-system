@@ -9,7 +9,7 @@ export default function Settings() {
   return (
     <DashboardLayout title="Settings" subtitle="Platform configuration, roles & integrations">
       <SectionCard title="Active Role (Prototype Switcher)" eyebrow="Access Control">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {Object.values(ROLES).map((r) => (
             <button
               key={r.id}
