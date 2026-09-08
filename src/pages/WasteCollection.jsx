@@ -67,10 +67,10 @@ export default function WasteCollection() {
           </div>
 
           <div className="flex gap-3">
-            <button className="flex-1 flex items-center justify-center gap-2 bg-civic-teal text-canvas font-medium text-xs rounded-md py-2.5 hover:opacity-90">
+            <button className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl py-2.5 shadow-sm transition-colors cursor-pointer">
               <CheckCircle2 size={14} /> Confirm Collection (Save &amp; Next)
             </button>
-            <button className="flex items-center justify-center gap-2 border border-civic-rose/40 text-civic-rose text-xs rounded-md px-4 hover:bg-civic-roseDim">
+            <button className="flex items-center justify-center gap-2 border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100 font-medium text-xs rounded-xl px-4 transition-colors cursor-pointer">
               <Flag size={14} /> Flag Issue / Refused
             </button>
           </div>

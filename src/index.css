@@ -2,43 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root {
+:root {
+  /* Bright Enterprise/SaaS Color Palette */
+  --color-canvas: 245, 248, 252;       /* #F5F8FC - very light cool gray/blue-white */
+  --color-surface: 255, 255, 255;      /* #FFFFFF - crisp white cards */
+  --color-surface-alt: 248, 250, 253;  /* #F8FAFD - clean soft off-white */
+  --color-surface-raised: 255, 255, 255;
+  --color-border: 220, 230, 242;       /* #DCE6F2 - subtle light blue/gray border */
+  --color-border-soft: 237, 242, 248;  /* #EDF2F8 */
+  --color-ink: 16, 42, 86;             /* #102A56 - dark navy/blue primary text */
+  --color-ink-muted: 102, 122, 153;    /* #667A99 - muted blue-gray secondary text */
+  --color-ink-faint: 142, 158, 181;    /* #8E9EB5 - light blue-gray */
+
+  /* Enterprise brand accents */
+  --civic-teal: 19, 184, 137;          /* #13B889 - Fresh Green/Teal */
+  --civic-tealDim: 232, 248, 241;      /* #E8F8F1 - Pale Mint */
+  --civic-leaf: 32, 180, 134;          /* #20B486 - Success Green */
+  --civic-leafDim: 232, 248, 241;      /* #E8F8F1 - Pale Mint */
+  --civic-sky: 38, 132, 232;           /* #2684E8 - Bright Blue */
+  --civic-skyDim: 234, 243, 255;       /* #EAF3FF - Pale Blue */
+  --civic-saffron: 245, 158, 11;       /* #F59E0B - Amber Warning */
+  --civic-saffronDim: 255, 245, 221;   /* #FFF5DD - Pale Amber */
+  --civic-rose: 214, 69, 69;           /* #D64545 - Soft Red */
+  --civic-roseDim: 255, 236, 236;      /* #FFECEC - Pale Red */
+  --civic-violet: 139, 92, 246;        /* #8B5CF6 - Light Purple */
+}
+
+.dark {
+  /* Night / Dark Mode: Deep Black with crisp contrast */
+  --color-canvas: 0, 0, 0;
+  --color-surface: 12, 12, 14;
+  --color-surface-alt: 20, 20, 23;
+  --color-surface-raised: 28, 28, 32;
+  --color-border: 39, 39, 42;
+  --color-border-soft: 27, 27, 30;
+  --color-ink: 255, 255, 255;
+  --color-ink-muted: 161, 161, 170;
+  --color-ink-faint: 113, 113, 122;
+
+  --civic-teal: 52, 211, 153;
+  --civic-tealDim: 6, 78, 59;
+  --civic-leaf: 52, 211, 153;
+  --civic-leafDim: 6, 78, 59;
+  --civic-sky: 96, 165, 250;
+  --civic-skyDim: 30, 58, 138;
+  --civic-saffron: 251, 191, 36;
+  --civic-saffronDim: 120, 53, 15;
+  --civic-rose: 248, 113, 113;
+  --civic-roseDim: 127, 29, 29;
+  --civic-violet: 167, 139, 250;
+}
+
+html, body, #root {
   height: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body {
   @apply bg-canvas text-ink font-sans antialiased;
-  background-image:
-    radial-gradient(1200px 600px at 90% -10%, rgba(34, 184, 166, 0.06), transparent),
-    radial-gradient(900px 500px at -10% 20%, rgba(239, 162, 61, 0.05), transparent);
+  background-color: #f5f8fc;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.dark body {
+  background-color: #000000;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: #223252;
-  border-radius: 8px;
+  background: #cbd5e1;
+  border-radius: 9999px;
 }
-
+.dark ::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: #2c3f66;
+  background: #94a3b8;
 }
 
-.tabular {
-  font-variant-numeric: tabular-nums;
-}
+.tabular { font-variant-numeric: tabular-nums; }
 
 .leaflet-container {
-  background: #0d1626 !important;
-  border-radius: 8px;
-  font-family: "IBM Plex Sans", sans-serif;
+  background: #f5f8fc !important;
+  border-radius: 16px;
+  font-family: inherit;
+}
+.dark .leaflet-container {
+  background: #09090b !important;
 }
