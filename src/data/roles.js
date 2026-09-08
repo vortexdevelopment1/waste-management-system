@@ -117,15 +117,15 @@ export const DEMO_CREDENTIALS = [
 export const ROLE_ACCESS = {
   admin: '*',
   supervisor: [
-    'dashboard', 'route-tracking', 'waste-collection', 'segregation', 'bwg',
+    'dashboard', 'route-tracking', 'waste-collection', 'geotagging', 'segregation', 'bwg',
     'transfer-station', 'mrf', 'rat', 'weighbridge', 'cctv', 'complaints',
-    'street-sweeping', 'drain-desilting', 'geotagging', 'kpi', 'reports'
+    'kpi', 'reports', 'street-sweeping', 'drain-desilting'
   ],
   driver: [
-    'dashboard', 'route-tracking', 'waste-collection', 'segregation', 'complaints'
+    'dashboard', 'route-tracking', 'waste-collection', 'segregation', 'weighbridge', 'complaints'
   ],
   user: [
-    'dashboard', 'waste-collection', 'user-charges', 'complaints', 'segregation'
+    'dashboard', 'waste-collection', 'segregation', 'user-charges', 'complaints', 'bwg'
   ]
 }
 
